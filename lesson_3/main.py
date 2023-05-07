@@ -2,7 +2,7 @@ from book_and_days import *
 
 def collect_the_bag(day):
     book_for_day = []
-    while len(book_for_day) != len(schedule[day]):
+    for i in range(len(schedule[day])):
         book = input('Введіть назву підручника: ').title().lstrip().rstrip()
         if book not in book_for_day and book in schedule[day]:
             print("Добре Саня, вгадав. Все ж таки задатки розуму присутні")
@@ -16,7 +16,10 @@ def collect_the_bag(day):
 if __name__ == '__main__':
     day = input('Введіть день тижня: ').lower().lstrip().rstrip()
     if day in schedule.keys():
-        print(*collect_the_bag(day))
-        print('Ваша сумка зібрна')
+        bag = collect_the_bag(day)
+        if len(bag) == len(schedule[day]):
+            print('Ваша сумка зібрна')
+        else:
+            print('У сумці недостатньо книжок')
     else:
         print('Олух ти, Санек! Давай ще раз)')
